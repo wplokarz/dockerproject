@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  selenium-chrome:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - "4444:4444" # Map TCP port 4444 in the container to port 4444 on the Docker host.
+      - "7900:7900"
+    shm_size: 2gb # Recommended for Chrome to avoid crashes.
