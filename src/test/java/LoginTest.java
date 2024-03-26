@@ -24,10 +24,15 @@ public class LoginTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--enable-logging");
         options.addArguments("--v=1");
-//        options.setBinary("/opt/chrome/chrome-linux64/chrome");
-//        WebDriver driver = new ChromeDriver(options);
-        String gridUrl = "http://127.0.0.1:4444";
-        WebDriver driver = new RemoteWebDriver(new URL(gridUrl), options);
+
+        // to use docker compose with tests to run inside
+        options.setBinary("/opt/chrome/chrome-linux64/chrome");
+        WebDriver driver = new ChromeDriver(options);
+
+        // to use docker compose to create container with endpoint to pass tests
+
+//        String gridUrl = "http://127.0.0.1:4444";
+//        WebDriver driver = new RemoteWebDriver(new URL(gridUrl), options);
         driver.get("https://practicetestautomation.com/practice-test-login/");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         By usernameField = By.xpath("//input[@id='username']");
